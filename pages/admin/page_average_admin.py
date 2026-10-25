@@ -8,7 +8,10 @@ from core.database import (
      get_current_term_index,
 )
 from core.subjects_data import CATEGORIZED_DEFAULT_SUBJECTS
-from core import shared_results
+import core.shared_results as shared_results
+
+
+
 class AveragePage(tk.Frame):
 
     def __init__(self, parent, student_number=None):
@@ -305,7 +308,7 @@ class AveragePage(tk.Frame):
 
     def calculate_grade_point(self, final_grade):
         if final_grade >= 94.8:
-            return 1.00
+            return 1.0
         elif final_grade >= 89.2:
             return 1.25
         elif final_grade >= 83.6:
@@ -313,7 +316,7 @@ class AveragePage(tk.Frame):
         elif final_grade >= 78.0:
             return 1.75
         elif final_grade >= 72.4:
-            return 2.00
+            return 2.0
         elif final_grade >= 66.8:
             return 2.25
         elif final_grade >= 61.2:
@@ -321,7 +324,7 @@ class AveragePage(tk.Frame):
         elif final_grade >= 55.6:
             return 2.75
         elif final_grade >= 50.0:
-            return 3.00
+            return 3.0
         else:
             return 3.25
 
