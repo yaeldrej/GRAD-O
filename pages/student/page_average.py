@@ -8,7 +8,7 @@ from core.database import (
     get_current_term_index,
 )
 from core.subjects_data import CATEGORIZED_DEFAULT_SUBJECTS
-from core import shared_results
+import core.shared_results as shared_results
 from pathlib import Path
 
 try:
@@ -263,21 +263,21 @@ class AveragePage(tk.Frame):
                 e = tk.Entry(
                     self.equivalency_table,
                     font=("Titillium Web", 10, "bold"),
-                    fg="black",
-                    bg=LIGHT_MODE["table"],
                     relief="solid",
                     bd=1,
                     justify="left",
-                    validate="key",
-                    validatecommand=vcmd,
+                    takefocus=0,
+                    cursor="arrow",
                 )
                 e.grid(row=i, column=j, sticky="nsew")
+                e.insert(tk.END, str(NON_GLOBAL_EQUIVALENCY_DATA[i][j]))
 
-                # Temporarily turn off validation to populate initial values safely
-                e.config(validate="none")
-                val = str(NON_GLOBAL_EQUIVALENCY_DATA[i][j])
-                e.insert(tk.END, val)
-                e.config(validate="key")
+                # Locked: can be read but not edited, and shows no cursor
+                e.config(
+                    state=tk.DISABLED,
+                    disabledbackground=LIGHT_MODE["table"],
+                    disabledforeground="black",
+                )
 
                 row_entries.append(e)
             self.equivalency_entries.append(row_entries)
@@ -417,11 +417,9 @@ class AveragePage(tk.Frame):
         for row_entries in self.equivalency_entries:
             for entry in row_entries:
                 entry.configure(
-                bg=list_bg, fg=text_fg,
-                insertbackground=text_fg,
-                selectbackground=button_bg,
-                selectforeground=text_fg,
-            )
+                    disabledbackground=list_bg,
+                    disabledforeground=text_fg,
+                )
 
     # Scrollbar
         self.average_scrollbar.configure(

@@ -27,6 +27,7 @@ class CalculatorPage(tk.Frame):
 
         vcmd = (self.register(validate_input), "%P")
 
+
         # Calculator Box
         self.calculator_frame = tk.Frame(
             self,
@@ -524,6 +525,14 @@ class CalculatorPage(tk.Frame):
         self.subject_label.configure(
             bg=theme["table"], fg=theme["text"]
         )
+        
+        # Captions above the dropdowns
+        for label in (
+            self.year_caption,
+            self.semester_caption,
+            self.subject_caption,
+        ):
+            label.configure(bg=theme["table"], fg=theme["text"])
 
         # Enter Grades Label
         self.enter_grades_label.configure(

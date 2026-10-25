@@ -784,11 +784,16 @@ class CalculatorPage(tk.Frame):
         ):
             separator.configure(bg=theme["text"])
 
-        # Calculate button
-        self.calculator_button.configure(
-            bg=theme["table"], fg=theme["text"],
-            activebackground=theme["sidebar"], activeforeground=theme["text"],
-        )
+        # Calculate / Save / Cancel buttons
+        for button in (
+            self.calculator_button,
+            self.save_button,
+            self.cancel_button,
+        ):
+            button.configure(
+                bg=theme["table"], fg=theme["text"],
+                activebackground=theme["sidebar"], activeforeground=theme["text"],
+            )
 
         # Results panel
         self.result_frame.configure(bg=theme["table"])

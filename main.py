@@ -91,7 +91,7 @@ class GradOApp:
                 self.content_frame, self.window, self.bg_photo, self.student_number
             ),
             "average": AveragePage(self.content_frame, self.student_number),
-            "history": HistoryPage(self.content_frame, self.bg_photo, self.student_number),
+            "history": HistoryPage(self.content_frame, self.bg_photo, student_number=self.student_number),
         }
  
         self.pages["profile"] = self.create_profile_page()

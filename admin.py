@@ -87,7 +87,7 @@ class AdminPage:
  
         # Instantiate Pages with scaled background photos
         self.admin_pages = {
-            "home": HomePage(self.admin_content_frame, self.admin_bg_photo),
+            "home": HomePage(self.admin_content_frame, self.admin_bg_photo, on_navigate=self.admin_show_page),
             "calculator": CalculatorPage(self.admin_content_frame, self.admin_bg_photo),
             "activity": ActivityPage(
                 self.admin_content_frame, self.window_admin, self.admin_bg_photo
